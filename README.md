@@ -40,3 +40,52 @@ Click for demo [https://sujancse.github.io/geofence/](https://sujancse.github.io
 </body>
 </html>
 ```
+
+## Geofence Events
+
+#### Events list
+* nodeClick
+* polygonClick
+* dragStart
+* dragEnd
+* setAt
+* insertAt
+
+## Example Usage
+
+#### Click on the node and delete
+```
+geofence.on('nodeClick', [polygon], function (event, polygon) {
+    // Do something with the event and clicked polygon
+    
+    // Your can show infoWindow or marker
+    var contentString = '<button id="delete">Delete</button>';
+    infoWindow = geofence.createInfowindow(contentString, event);
+    
+    // Then on infowindow ready click delete to delete the node
+    geofence.onDomReady(infoWindow, function() {
+        selectId('delete').addEventListener('click', function() {
+            geofence.close(infoWindow);
+            geofence.deleteNode(event, polygon);
+        });
+    });
+});
+```
+
+#### Drag end revert the polygon
+```
+geofence.on('dragEnd', [polygon], function (event, polygon, previousState) {
+    
+    // Show the infowindow
+    var contentString = '<button id="revert">Revert</button>';
+    infoWindow = geofence.createInfowindow(contentString, event);
+    
+    // On infowindow ready revert the polygon to previous state
+    geofence.onDomReady(infoWindow, function() {
+        selectId('revert').addEventListener('click', function() {
+            geofence.close(infoWindow);
+            geofence.revert(polygon, previousState);
+        });
+    });
+});
+```
