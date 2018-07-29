@@ -105,6 +105,113 @@ geofence.on('dragEnd', [polygon], function (event, polygon, previousState) {
 geofence.draw(coords, options);
 ```
 
+## Polygon events
+#### On polygon node click
+```
+/**
+* On node click will give you the event
+* which includes the node coordinates
+* See demo example how to use that coordinates
+*/
+
+geofence.on('nodeClick', [polygon], function (event, polygon) {
+    // Do something with the node and polygon
+});
+```
+
+#### On polygon click
+```
+/**
+* On click will give you the event
+* which includes the clicked coordinates
+* See demo example how to use that coordinates
+*/
+
+geofence.on('polygonClick', [polygon], function (event, polygon) {
+    // Do something with the event and polygon
+});
+```
+
+#### Delete the clicked node
+```
+/**
+* Delete the node by passing the node clicked event 
+* and the polygon object
+*
+* Use this function inside on node click event
+*/
+
+geofence.deleteNode(event, polygon);
+```
+
+#### Drag the polygon and catch the event
+```
+/**
+* Polygon dragStart will give you the event
+* which includes the current coordinates
+*/
+
+geofence.on('dragStart', function(event, polygon) {
+    // Do somethong with the event and polygon
+});
+```
+
+#### Polygon dragEnd event
+```
+/**
+* Polygon dragEnd will give you the event, current polygon
+* and the previous polygon state
+*
+* See the advanced demo to know
+* How to get back to the previous demo
+*/
+
+geofence.on('dragEnd', function(event, polygon, previousState) {
+    // Do somethong with the event, polygon and previousState
+});
+```
+
+#### Polygon insertAt and setAt event
+```
+/**
+* Polygon insertAt and setAt will give you the event and polygon
+*
+* You get the polygon coordinates and events
+*/
+
+geofence.on('insertAt', function(event, polygon) {
+    // Do somethong with the event and polygon
+});
+
+geofence.on('setAt', function(event, polygon) {
+    // Do somethong with the event and polygon
+});
+```
+
+## Create InfoWindow and Marker
+#### Create and infoWindow
+```
+/**
+* Provide the content string
+* Make sure you use this inside some events
+*/
+
+geofence.createInfowindow(contentString, event);
+
+geofence.close(infoWindow);
+```
+
+## General helper functions
+#### Revert the polygon to previous state
+```
+/**
+* Revert the polygon to previous state
+* Make sure to use inside dragEnd event
+*/
+
+geofence.revert(polygon, previousState);
+```
+
 #### Get the polygon coordinates
 ```
 /**
