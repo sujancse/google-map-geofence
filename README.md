@@ -89,3 +89,66 @@ geofence.on('dragEnd', [polygon], function (event, polygon, previousState) {
     });
 });
 ```
+
+## API functions
+
+#### Draw the polygon
+```
+/**
+ * Draw polygon using coordinates
+ *
+ * @param coordinates
+ * @param options optional
+ * @returns {*}
+ */
+ 
+geofence.draw(coords, options);
+```
+
+#### Get the polygon coordinates
+```
+/**
+ * Get the polygon coordinates
+ *
+ * @param polygon object
+ * @returns {*|Array}
+ */
+ 
+geofence.getCoordinates(polygon);
+```
+
+#### Get the polygon coordinates string
+```
+/**
+ * Get the polygon coordinates string
+ *
+ * @param polygon object
+ * @returns string
+ */
+ 
+geofence.getCoordinatesString(polygon);
+```
+
+#### Coordinates string to array
+```
+/**
+ * Get the polygon coordinates string to array
+ *
+ * @param polygon object
+ * @returns array
+ */
+ 
+geofence.stringToArray(coordinatesString);
+```
+
+#### Coordinates to LatLng object
+```
+/**
+ * Coordinates to LatLng object
+ *
+ * @param polygon object
+ * @returns LatLng object
+ */
+ 
+geofence.coordinatesToLatLng(coordinates);
+```
