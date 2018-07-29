@@ -30,7 +30,7 @@
             center: this.options.center,
             mapTypeId: this.options.mapTypeId
         });
-    }
+    };
 
     // Public Methods
     /**
@@ -43,7 +43,7 @@
     Geofence.prototype.draw = function(coordinates, options) {
         var coords = coordinatesToLatLng(coordinates);
         return draw(this.map, newPolygon(coords, options));
-    }
+    };
 
     /**
      * Get the polygon geo bounds
@@ -53,7 +53,7 @@
      */
     Geofence.prototype.getBounds = function(polygon) {
         return getBounds(polygon);
-    }
+    };
 
     /**
      * Get the polygon coordinates
@@ -63,7 +63,7 @@
      */
     Geofence.prototype.getCoordinates = function(polygon) {
         return getCoordinates(polygon);
-    }
+    };
 
     /**
      * Create infowindow on clicked position
@@ -74,7 +74,7 @@
      */
     Geofence.prototype.createInfowindow = function(contentString, event) {
         return newInfowindow(this.map, contentString, event);
-    }
+    };
 
     /**
      * Delete a polygon node
@@ -85,7 +85,7 @@
      */
     Geofence.prototype.deleteNode = function(event, polygon) {
         return deleteNode(event, polygon);
-    }
+    };
 
     /**
      * Get coordinates string
@@ -95,7 +95,7 @@
      */
     Geofence.prototype.getCoordinatesString = function(polygon) {
         return getCoordinatesString(polygon);
-    }
+    };
 
     /**
      * Get coords array from coords string
@@ -105,7 +105,7 @@
      */
     Geofence.prototype.stringToArray = function(coordsString) {
         return stringToArray(coordsString);
-    }
+    };
 
     /**
      * Coordinates array to LatLng object
@@ -115,7 +115,7 @@
      */
     Geofence.prototype.coordinatesToLatLng = function (coordinates) {
         return coordinatesToLatLng(coordinates);
-    }
+    };
 
     /**
      * Update polygon path
@@ -126,7 +126,7 @@
      */
     Geofence.prototype.updatePolygonPath = function (polygon, coords) {
         return updatePolygonPath(polygon, coords);
-    }
+    };
 
     /**
      * Get all geofences
@@ -135,7 +135,7 @@
      */
     Geofence.prototype.getGeofence = function() {
         return getGeofence();
-    }
+    };
 
     /**
      * Delete a polygon
@@ -144,7 +144,7 @@
      */
     Geofence.prototype.delete = function(polygon) {
         polygon.setMap(null);
-    }
+    };
 
     /**
      * Check wheather the dom object is ready or not
@@ -155,7 +155,7 @@
      */
     Geofence.prototype.onDomReady = function(object, callback) {
         return onDomReady(object, callback);
-    }
+    };
 
     /**
      * Revert polygon to previous state
@@ -166,7 +166,7 @@
      */
     Geofence.prototype.revert = function(polygon, previousState) {
         return revert(polygon, previousState);
-    }
+    };
 
     /**
      * Handling all polygon events
@@ -175,11 +175,11 @@
      * @param objects
      * @param callback
      */
-    Geofence.prototype.on = function(event, objects = [], callback) {
+    Geofence.prototype.on = function(event, objects, callback) {
         for (var i = 0; i < objects.length; i++) {
             objects[i].addListener(event, callback);
         }
-    }
+    };
 
     /**
      * Close an infoWindow
@@ -190,7 +190,7 @@
         if (infoWindow instanceof google.maps.InfoWindow) {
             infoWindow.close();
         }
-    }
+    };
 
     /**
      * Set polygon coordinates string to specific id
@@ -200,7 +200,27 @@
      */
     Geofence.prototype.setInfo = function(polygon, infoId) {
         selectId(infoId).value = getCoordinatesString(polygon);
-    }
+    };
+
+    /**
+     * Set polygon bounds string to specific id
+     *
+     * @param polygon
+     * @param boundsId
+     */
+    Geofence.prototype.setBounds = function(polygon, boundsId) {
+        selectId(boundsId).value = getBoundsArr(polygon);
+    };
+
+    /**
+     * Id selector
+     *
+     * @param id
+     * @returns {*}
+     */
+    Geofence.prototype.selectId = function (id) {
+        return selectId(id);
+    };
 
     /** ******************************************************
      * Private function of plugin
@@ -240,16 +260,14 @@
             strokeWeight: 1,
             editable: true,
             draggable: true
-        }
+        };
 
         var previousState;
 
         geofenceOptions.path = coords;
         geofenceOptions = Object.assign(geofenceOptions, options);
 
-        var polygon = new google.maps.Polygon(geofenceOptions);
-
-        return polygon;
+        return new google.maps.Polygon(geofenceOptions);
     }
 
     /**
@@ -356,7 +374,7 @@
      * @returns {[*,*,*,*]}
      */
     function getBoundsArr(polygon) {
-        var bounds = getGeobounds(polygon);
+        var bounds = getBounds(polygon);
 
         var boundsArr = [
             bounds.getNorthEast().lat(), 

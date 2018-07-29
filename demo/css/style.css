@@ -1,0 +1,18 @@
+#mymap {
+    height: 450px;
+    width: auto;
+}
+
+.body {
+    padding-top: 50px;
+}
+
+.textarea-part {
+    position: relative;
+}
+
+.btn-apply {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
