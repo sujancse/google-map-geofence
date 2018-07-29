@@ -12,13 +12,13 @@ Click for demo [https://sujancse.github.io/geofence/](https://sujancse.github.io
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Geofence Demo</title>
   <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY"></script>
-  <script src="gmap-v3-geofence.min.js.js"></script>
+  <script src="gmap-v3-geofence.min.js"></script>
   <style type="text/css">
     #mymap {
-      width: 400px;
-      height: auto;
+      width: auto;
+      height: 450px;
     }
   </style>
 </head>
