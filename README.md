@@ -189,7 +189,7 @@ geofence.on('setAt', function(event, polygon) {
 ```
 
 ## Create InfoWindow and Marker
-#### Create and infoWindow
+#### Create an infoWindow
 ```
 /**
 * Provide the content string
@@ -199,6 +199,18 @@ geofence.on('setAt', function(event, polygon) {
 geofence.createInfowindow(contentString, event);
 
 geofence.close(infoWindow);
+```
+
+#### Create a marker
+```
+/**
+* Provide the title
+* Make sure you use this inside some events
+*/
+
+geofence.createMarker(title, event);
+
+geofence.closeMarker(marker);
 ```
 
 ## General helper functions

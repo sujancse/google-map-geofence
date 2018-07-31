@@ -36,6 +36,22 @@
     var coordsString = geofence.getCoordinatesString(polygon);
     geofence.selectId('coordinates').value = coordsString;
 
+    geofence.on('polygonClick', [polygon], function (event, polygon) {
+        var title = 'Inside Polygon';
+        marker = geofence.createMarker(title, event);
+    });
+
+    geofence.on('click', [polygon], function (event, polygon) {
+        var result = geofence.pointInPolygon(event, polygon);
+
+        if (result) {
+            console.log('Inside Polygon');
+        } else {
+            console.log('Outside Polygon');
+        }
+
+    });
+
     geofence.on('insertAt', [polygon], function(event, polygon) {
         geofence.setInfo(polygon, 'coordinates');
     });

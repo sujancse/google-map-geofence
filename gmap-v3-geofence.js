@@ -77,6 +77,26 @@
     };
 
     /**
+     * Create new marker
+     *
+     * @param title
+     * @param event
+     * @returns {*}
+     */
+    Geofence.prototype.createMarker = function(title, event) {
+        return createMarker(this.map, title, event);
+    };
+
+    /**
+     * Close the marker
+     *
+     * @param marker
+     */
+    Geofence.prototype.closeMarker = function (marker) {
+        marker.setMap(null);
+    };
+
+    /**
      * Delete a polygon node
      *
      * @param event
@@ -222,6 +242,17 @@
         return selectId(id);
     };
 
+    /**
+     * Coordinates in polygon
+     *
+     * @param event
+     * @param object
+     * @returns {*}
+     */
+    Geofence.prototype.pointInPolygon = function (event, object) {
+        return !!google.maps.geometry.poly.containsLocation(event.latLng, object);
+    };
+
     /** ******************************************************
      * Private function of plugin
      ** *************************************************** */
@@ -290,6 +321,8 @@
             } else {
                 google.maps.event.trigger(this, 'polygonClick', event, this);
             }
+
+            google.maps.event.trigger(this, 'click', event, this);
 
         });
 
@@ -401,6 +434,23 @@
         infoWindow.open(map);
 
         return infoWindow;
+    }
+
+    /**
+     * Create a new marker
+     *
+     * @param map
+     * @param title
+     * @param event
+     */
+    function createMarker(map, title, event) {
+        var marker = new google.maps.Marker({
+            position: event.latLng,
+            map: map,
+            title: title
+        });
+
+        return marker;
     }
 
     /**
