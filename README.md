@@ -14,7 +14,7 @@ Click for demo [https://sujancse.github.io/geofence/](https://sujancse.github.io
 <head>
   <title>Geofence Demo</title>
   <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY"></script>
-  <script src="gmap-v3-geofence.min.js"></script>
+  <script src="gmap-v3-geofence.js"></script>
   <style type="text/css">
     #mymap {
       width: auto;
